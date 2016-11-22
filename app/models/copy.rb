@@ -1,0 +1,2 @@
+class Copy < ApplicationRecord
+end

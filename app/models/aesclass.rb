@@ -1,0 +1,2 @@
+class Aesclass < ApplicationRecord
+end
