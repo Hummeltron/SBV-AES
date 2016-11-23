@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ISBN: 
+  Leihbuch: false
+  imgpath: MyString
+  preis: 
+
+two:
+  ISBN: 
+  Leihbuch: false
+  imgpath: MyString
+  preis: 

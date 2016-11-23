@@ -1,0 +1,156 @@
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (32.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAesclasses (20161117110142)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "aesclasses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161117110142"]]
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-11-17 11:02:15 UTC], ["updated_at", 2016-11-17 11:02:15 UTC]]
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateStudents (20161122181301)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "students" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" decimal, "birth" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161122181301"]]
+  [1m[35m (17.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCopies (20161122181408)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "copies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" integer, "label" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161122181408"]]
+  [1m[35m (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBooks (20161122181456)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "books" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "label" varchar, "paid" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161122181456"]]
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBookdetails (20161122181625)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "bookdetails" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ISBN" decimal, "Leihbuch" boolean, "imgpath" varchar, "preis" decimal, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161122181625"]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 89.12.99.220 at 2016-11-23 17:42:57 +0000
+Cannot render console from 89.12.99.220! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AesclassesController#index as HTML
+  Rendering aesclasses/index.html.erb within layouts/application
+  [1m[36mAesclass Load (0.2ms)[0m  [1m[34mSELECT "aesclasses".* FROM "aesclasses"[0m
+  Rendered aesclasses/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 768ms (Views: 754.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 104.196.145.91 at 2016-11-23 17:43:13 +0000
+Cannot render console from 104.196.145.91! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AesclassesController#index as */*
+  Rendering aesclasses/index.html.erb within layouts/application
+  [1m[36mAesclass Load (0.2ms)[0m  [1m[34mSELECT "aesclasses".* FROM "aesclasses"[0m
+  Rendered aesclasses/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 52ms (Views: 44.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 46.5.2.0 at 2016-11-23 17:43:26 +0000
+Cannot render console from 46.5.2.0! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AesclassesController#index as HTML
+  Rendering aesclasses/index.html.erb within layouts/application
+  [1m[36mAesclass Load (0.2ms)[0m  [1m[34mSELECT "aesclasses".* FROM "aesclasses"[0m
+  Rendered aesclasses/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/aesclasses/new" for 89.12.99.220 at 2016-11-23 17:43:27 +0000
+Cannot render console from 89.12.99.220! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AesclassesController#new as HTML
+  Rendering aesclasses/new.html.erb within layouts/application
+  Rendered aesclasses/_form.html.erb (19.2ms)
+  Rendered aesclasses/new.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 50ms (Views: 44.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 89.12.99.220 at 2016-11-23 17:45:11 +0000
+Cannot render console from 89.12.99.220! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/railties-5.0.0.1/lib/rails/templates/rails/welcome/index.html.erb (3.5ms)
+Completed 200 OK in 23ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 89.12.99.220 at 2016-11-23 17:45:39 +0000
+Cannot render console from 89.12.99.220! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AesclassesController#index as HTML
+  Rendering aesclasses/index.html.erb within layouts/application
+  [1m[36mAesclass Load (0.2ms)[0m  [1m[34mSELECT "aesclasses".* FROM "aesclasses"[0m
+  Rendered aesclasses/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 320ms (Views: 307.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/aesclasses/new" for 46.5.2.0 at 2016-11-23 17:46:57 +0000
+Cannot render console from 46.5.2.0! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AesclassesController#new as HTML
+  Rendering aesclasses/new.html.erb within layouts/application
+  Rendered aesclasses/_form.html.erb (43.0ms)
+  Rendered aesclasses/new.html.erb within layouts/application (44.3ms)
+Completed 200 OK in 152ms (Views: 146.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/aesclasses/new" for 89.12.99.220 at 2016-11-23 17:47:14 +0000
+Cannot render console from 89.12.99.220! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AesclassesController#new as HTML
+  Rendering aesclasses/new.html.erb within layouts/application
+  Rendered aesclasses/_form.html.erb (2.4ms)
+  Rendered aesclasses/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 133ms (Views: 131.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/aesclasses" for 46.5.2.0 at 2016-11-23 17:47:14 +0000
+Cannot render console from 46.5.2.0! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AesclassesController#index as HTML
+  Rendering aesclasses/index.html.erb within layouts/application
+  [1m[36mAesclass Load (0.2ms)[0m  [1m[34mSELECT "aesclasses".* FROM "aesclasses"[0m
+  Rendered aesclasses/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 184ms (Views: 182.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 89.12.99.220 at 2016-11-23 17:52:20 +0000
+Cannot render console from 89.12.99.220! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AesclassesController#index as HTML
+  Rendering aesclasses/index.html.erb within layouts/application
+  [1m[36mAesclass Load (0.2ms)[0m  [1m[34mSELECT "aesclasses".* FROM "aesclasses"[0m
+  Rendered aesclasses/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 315ms (Views: 303.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 89.12.99.220 at 2016-11-23 17:55:19 +0000
+Cannot render console from 89.12.99.220! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AesclassesController#index as HTML
+  Rendering aesclasses/index.html.erb within layouts/application
+  [1m[36mAesclass Load (0.4ms)[0m  [1m[34mSELECT "aesclasses".* FROM "aesclasses"[0m
+  Rendered aesclasses/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 147ms (Views: 117.1ms | ActiveRecord: 0.6ms)
+
+
