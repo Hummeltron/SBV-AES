@@ -8,7 +8,11 @@
     "build": {
         "@builder": "auto",
         "@path": "/.c9/builders",
+<<<<<<< HEAD
         "@saveall": true
+=======
+        "@saveall": "true"
+>>>>>>> origin/master
     },
     "find.nak": {
         "@searchLimit": 100
