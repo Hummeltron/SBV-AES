@@ -6,6 +6,10 @@ class AesclassesController < ApplicationController
   def index
     @aesclasses = Aesclass.all
   end
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   def testview
        new_class = Classes.create({name:'testclass'})
         puts new_class
@@ -14,6 +18,15 @@ class AesclassesController < ApplicationController
   # GET /aesclasses/1.json
   def show
   
+<<<<<<< HEAD
+=======
+=======
+
+  # GET /aesclasses/1
+  # GET /aesclasses/1.json
+  def show
+>>>>>>> origin/master
+>>>>>>> origin/master
   end
 
   # GET /aesclasses/new
