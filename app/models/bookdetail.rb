@@ -1,2 +1,0 @@
-class Bookdetail < ApplicationRecord
-end

@@ -1,2 +1,0 @@
-class Aesclass < ApplicationRecord
-end

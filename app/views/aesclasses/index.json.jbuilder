@@ -1,1 +1,0 @@
-json.array! @aesclasses, partial: 'aesclasses/aesclass', as: :aesclass

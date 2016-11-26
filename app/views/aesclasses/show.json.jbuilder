@@ -1,1 +1,0 @@
-json.partial! "aesclasses/aesclass", aesclass: @aesclass
