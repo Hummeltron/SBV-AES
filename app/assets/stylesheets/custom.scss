@@ -1,0 +1,37 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.container {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-color: white;
+    box-shadow: 2px 2px 5px gray;
+}
+
+table {
+    @extend .table;
+    @extend .table-striped;
+}
+
+table tbody tr td {
+    margin: 0px auto;
+}
+
+table tbody tr td div {
+    @extend .btn-group;
+    float: right;
+}
+
+.field {
+    @extend .form-group;
+}
+
+select, input[type="number"], input[type="text"] {
+    @extend .form-control;
+}
+
+
+.button, input[type="submit"], table tbody tr td div a {
+    @extend .btn;
+    @extend .btn-default;
+}

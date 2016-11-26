@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @student.name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @student.surname %>
+</p>
+
+<p>
+  <strong>Birth:</strong>
+  <%= @student.birth %>
+</p>
+
+<p>
+  <strong>Classname:</strong>
+  <%= @student.classname.full_name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @student.price %>
+</p>
+
+<div class="btn-group">
+  <%= link_to 'Edit', edit_student_path(@student), :class => "button" %>
+  <%= link_to 'Back', students_path, :class => "button" %>
+</div>

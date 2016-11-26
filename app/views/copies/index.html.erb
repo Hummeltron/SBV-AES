@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Copies</h1>
+
+<% if @copies.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Book</th>
+        <th>Student</th>
+        <th>Topay</th>
+        <th>Code</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @copies.each do |copy| %>
+        <tr>
+          <td><%= copy.book.label %></td>
+          <td><%= copy.student.full_name %></td>
+          <td><%= copy.topay %></td>
+          <td><%= copy.code %></td>
+          <td>
+            <div>
+              <%= link_to 'Show', copy %>
+              <%= link_to 'Edit', edit_copy_path(copy) %>
+              <%= link_to 'Destroy', copy, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+<% else %>
+  <p>No results to: <strong><%= params[:search] %></strong></p>
+<% end %>
+
+<br>
+
+<%= link_to 'New Copy', new_copy_path, :class => "button" %>

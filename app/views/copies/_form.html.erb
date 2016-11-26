@@ -1,0 +1,33 @@
+<%= form_for(@copy) do |f| %>
+  <% if @copy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@copy.errors.count, "error") %> prohibited this copy from being saved:</h2>
+
+      <ul>
+      <% @copy.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :book_id %>
+    <%= f.collection_select :book_id, Book.all, :id, :label, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :student_id %>
+    <%= f.collection_select :student_id, Student.all, :id, :full_name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :topay %>
+    <%= f.check_box :topay %>
+  </div>
+  <div class="field">
+    <%= f.label :code %>
+    <%= f.number_field :code %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
