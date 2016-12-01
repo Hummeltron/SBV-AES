@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+#banner {
+    height: 85px;
+    width: inherit;
+    background-image: url("http://www.aes-ettlingen.de/assets/images/Unsere_Schule_Mario-Ruben_v2.jpg");
+    background-repeat: no-repeat;
+}

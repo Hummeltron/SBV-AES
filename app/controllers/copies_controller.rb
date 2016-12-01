@@ -6,6 +6,7 @@ class CopiesController < ApplicationController
   def index
     if params[:search]
       @copies = Copy.search(params[:search])
+      render :result
     else
       @copies = Copy.all
     end

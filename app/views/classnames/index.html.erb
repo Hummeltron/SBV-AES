@@ -1,37 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Classnames</h1>
+<h1>Listing Classes</h1>
 
 <% if @classnames.present? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Year</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @classnames.each do |classname| %>
-        <tr>
-          <td><%= classname.name %></td>
-          <td><%= classname.year %></td>
-          <td>
-            <div>
-              <%= link_to 'Show', classname %>
-              <%= link_to 'Edit', edit_classname_path(classname) %>
-              <%= link_to 'Destroy', classname, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render 'list' %>
 <% else %>
-  <p>No results to: <strong><%= params[:search] %></strong></p>
+  <p>No classnames found</p>
 <% end %>
 
 <br>
 
-<%= link_to 'New Classname', new_classname_path, :class => "button" %>
+<%= link_to 'New Class', new_classname_path, :class => "button" %>

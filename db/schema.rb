@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20161125150905) do
   create_table "books", force: :cascade do |t|
     t.string   "label"
     t.float    "price"
-    t.integer  "isbn"
+    t.string   "isbn"
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20161125150905) do
   create_table "students", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
-    t.string   "birth"
+    t.date     "birth"
     t.integer  "classname_id"
     t.float    "price"
     t.datetime "created_at",   null: false

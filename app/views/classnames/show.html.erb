@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Class</h2>
+
 <p>
   <strong>Name:</strong>
   <%= @classname.name %>
@@ -9,6 +11,37 @@
   <strong>Year:</strong>
   <%= @classname.year %>
 </p>
+
+<h2>Students</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Birth</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @classname.students.to_ary.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.surname %></td>
+        <td><%= student.birth %></td>
+        <td><%= student.price %></td>
+        <td>
+          <div>
+            <%= link_to 'Show', student %>
+            <%= link_to 'Edit', edit_student_path(student) %>
+            <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <div class="btn-group">
   <%= link_to 'Edit', edit_classname_path(@classname), :class => "button" %>

@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Results for "<%= params[:search] %>"</h1>
+
+<% if @copies.present? %>
+  <%= render 'list' %>
+<% else %>
+  <p>No results for <strong><%= params[:search] %></strong></p>
+<% end %>
+
+<br>
+
+<%= link_to 'Back', copies_path, :class => "button" %>

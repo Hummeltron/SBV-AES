@@ -6,6 +6,7 @@ class ClassnamesController < ApplicationController
   def index
     if params[:search]
       @classnames = Classname.search(params[:search])
+      render :result
     else
       @classnames = Classname.all
     end
