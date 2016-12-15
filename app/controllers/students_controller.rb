@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
   def index
     if params[:search]
       @students = Student.search(params[:id])
+      render :result
     else
       @students = Student.all
     end

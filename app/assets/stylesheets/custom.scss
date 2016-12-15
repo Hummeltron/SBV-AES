@@ -1,13 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.container {
-    padding-top: 15px;
-    padding-bottom: 20px;
-    background-color: white;
-    box-shadow: 2px 2px 5px gray;
-}
-
 table {
     @extend .table;
     @extend .table-striped;
@@ -15,6 +8,7 @@ table {
 
 table tbody tr td {
     margin: 0px auto;
+    vertical-align: middle;
 }
 
 table tbody tr td div {
@@ -30,8 +24,16 @@ select, input[type="number"], input[type="text"] {
     @extend .form-control;
 }
 
-
 .button, input[type="submit"], table tbody tr td div a {
     @extend .btn;
     @extend .btn-default;
+}
+
+#student_birth_1i, #student_birth_2i, #student_birth_3i {
+    width: 33%;
+    display: inline;
+}
+
+.floating {
+    position: fixed;
 }

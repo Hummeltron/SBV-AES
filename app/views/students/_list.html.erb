@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Birth</th>
+      <th>Classname</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.surname %></td>
+        <td><%= student.birth %></td>
+        <td><%= student.classname.full_name %></td>
+        <td><%= student.price %></td>
+        <td><input type="checkbox" class="custom-control custom-checkbox custom-control-input"></input></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

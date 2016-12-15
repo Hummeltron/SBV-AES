@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/copies' => 'copies#index'
   get '/books' => 'books#index'
   get '/students' => 'students#index'
-  get '/classnames' => 'classnames#index'
+  get '/classes' => 'classnames#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -8,6 +8,7 @@ class BooksController < ApplicationController
     
     if params[:search]
       @books = Book.search(params[:search])
+      render :result
     else
       @books = Book.all
     end

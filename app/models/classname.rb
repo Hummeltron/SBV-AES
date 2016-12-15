@@ -1,4 +1,8 @@
 class Classname < ActiveRecord::Base
+  validates_presence_of :name
+  
+  has_many :students
+  
   def full_name
     "#{self.name}-#{self.year}".strip
   end

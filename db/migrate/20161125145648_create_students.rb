@@ -3,7 +3,7 @@ class CreateStudents < ActiveRecord::Migration
     create_table :students do |t|
       t.string :name
       t.string :surname
-      t.string :birth
+      t.date :birth
       t.references :classname, index: true, foreign_key: true
       t.float :price
 

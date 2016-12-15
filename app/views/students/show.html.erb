@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Student</h2>
+
 <p>
   <strong>Name:</strong>
   <%= @student.name %>
@@ -25,7 +27,36 @@
   <%= @student.price %>
 </p>
 
+<h2>Books</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Topay</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @student.copies.to_ary.each do |copy| %>
+      <tr>
+        <td><%= copy.book.label %></td>
+        <td><%= copy.topay %></td>
+        <td><%= copy.code %></td>
+        <td>
+          <div>
+            <%= link_to 'Show', copy %>
+            <%= link_to 'Edit', edit_copy_path(copy) %>
+            <%= link_to 'Destroy', copy, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
 <div class="btn-group">
   <%= link_to 'Edit', edit_student_path(@student), :class => "button" %>
-  <%= link_to 'Back', students_path, :class => "button" %>
+  <%= link_to 'Back', classname_path(@student.classname), :class => "button" %>
 </div>

@@ -9,16 +9,16 @@
 
   <body>
     <div class="container">
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
             <%= link_to "SBV-AES", "/", class: "navbar-brand" %>
           </div>
           <ul class="nav navbar-nav">
             <li><%= link_to "Books", "/books" %></li>
-            <li><%= link_to "Classnames", "/classnames" %></li>
-            <li><%= link_to "Students", "/students" %></li>
-            <li><%= link_to "Copies", "/copies" %></li>
+            <li><%= link_to "Classes", "/classes" %></li>
+            <li><%= link_to "Students (Deprecated)", "/students" %></li>
+            <li><%= link_to "Copies (Deprecated)", "/copies" %></li>
           </ul>
           <form class="navbar-form navbar-right">
             <div class="input-group">
@@ -32,7 +32,7 @@
           </form>
         </div>
       </nav>
-      <div class="container-fluid">
+      <div>
         <%= yield %>
       </div>
     </div>

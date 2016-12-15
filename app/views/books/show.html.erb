@@ -10,14 +10,17 @@
   <%= @book.price %>
 </p>
 
+
 <p>
   <strong>Isbn:</strong>
   <%= @book.isbn %>
 </p>
 
+
 <p>
   <strong>Image:</strong>
-  <%= @book.image %>
+ 
+  <%= image_tag( "/#{@book.label}.jpg", :alt => "Picture missing") %>
 </p>
 
 <div class="btn-group">

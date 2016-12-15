@@ -17,9 +17,9 @@
   </div>
   <div class="field">
     <%= f.label :year %>
-    <%= f.number_field :year %>
+    <%= f.select :year, (Time.zone.now.year - 5)...(Time.zone.now.year + 1) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Edit Class" %>
   </div>
 <% end %>

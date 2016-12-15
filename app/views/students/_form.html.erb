@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :birth %>
-    <%= f.text_field :birth %>
+    <%= f.date_select :birth, :start_year => Time.zone.now.year - 30, :end_year => Time.zone.now.year + 1 %>
   </div>
   <div class="field">
     <%= f.label :classname_id %>
