@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"filter":false,"title":"Ruby on Rails - Stopped","tooltip":"Ruby on Rails - Stopped","undoManager":{"mark":-1,"position":-1,"stack":[]},"output":{"id":"output-defaultRuby-won-wRails","width":1187,"height":127,"scrollTop":367,"config":{"command":"","default":true,"name":"Ruby on Rails","runner":"Ruby on Rails (default)"}},"timestamp":1480611492839,"hash":"da39a3ee5e6b4b0d3255bfef95601890afd80709"}
+=======
+{"filter":false,"title":"Ruby on Rails - Stopped","tooltip":"Ruby on Rails - Stopped","undoManager":{"mark":-1,"position":-1,"stack":[]},"output":{"id":"output-defaultRuby-won-wRails","width":1187,"height":127,"scrollTop":10516,"config":{"command":"","default":true,"name":"Ruby on Rails","runner":"Ruby on Rails (default)"}},"timestamp":1480611492839,"hash":"da39a3ee5e6b4b0d3255bfef95601890afd80709"}
+>>>>>>> origin/master

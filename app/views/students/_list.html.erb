@@ -18,7 +18,17 @@
         <td><%= student.birth %></td>
         <td><%= student.classname.full_name %></td>
         <td><%= student.price %></td>
+<<<<<<< HEAD
         <td><input type="checkbox" class="custom-control custom-checkbox custom-control-input"></input></td>
+=======
+        <td>
+          <div>
+            <%= link_to 'Show', student %>
+            <%= link_to 'Edit', edit_student_path(student) %>
+            <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </td>
+>>>>>>> origin/master
       </tr>
     <% end %>
   </tbody>
