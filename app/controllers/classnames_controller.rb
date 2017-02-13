@@ -67,11 +67,31 @@ class ClassnamesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_classname
       @classname = Classname.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf do
+          pdf = Prawn::Document.new
+          pdf.text "#{@classname.full_name}"
+          pdf.text "\n"
+          arr = Array.new 
+          
+          arr.push(["Schüler", "Geburtsdatum", "Preis"])
+          @classname.students.to_ary.each do |student|
+              price = student.price
+              student.copies.each do |copy|
+                price += copy.book.price if copy.topay
+              end
+              arr.push(["#{student.full_name}", "#{student.birth}", "#{price}"])
+          end
+          
+           pdf.table arr, :width => 540
+          send_data pdf.render, filename: "Pdf", type: "application/pdf" , disposition: "inline"
+        end
+      end
     end
-
+  
     # Never trust parameters from the scary internet, only allow the white list through.
     def classname_params
       params.require(:classname).permit(:name, :year)

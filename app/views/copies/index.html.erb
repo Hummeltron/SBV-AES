@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Copies</h1>
+<hr>
+<%= link_to 'New Copy', new_copy_path, :class => "btn btn-default btn-block" %>
+<hr>
 
 <% if @copies.present? %>
   <%= render 'list' %>
@@ -9,5 +12,3 @@
 <% end %>
 
 <br>
-
-<%= link_to 'New Copy', new_copy_path, :class => "button" %>

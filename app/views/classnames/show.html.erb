@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Class</h2>
+<div>
+  <h2 style="display: inline">Class</h2>
+  <div class="btn-group" style="float: right">
+    <%= link_to classname_path(@classname, :format => :pdf), :class => "button" do %>
+      <i class="glyphicon glyphicon-download-alt"></i>
+    <% end %>
+    <%= link_to edit_classname_path(@classname), :class => "button" do %>
+      <i class="glyphicon glyphicon-pencil"></i>
+    <% end %>
+  </div>
+</div>
 
 <p>
   <strong>Name:</strong>
@@ -44,6 +54,5 @@
 <br>
 
 <div class="btn-group">
-  <%= link_to 'Edit', edit_classname_path(@classname), :class => "button" %>
   <%= link_to 'Back', classnames_path, :class => "button" %>
 </div>

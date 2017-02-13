@@ -38,9 +38,6 @@ ActiveRecord::Schema.define(version: 20161125150905) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "copies", ["book_id"], name: "index_copies_on_book_id"
-  add_index "copies", ["student_id"], name: "index_copies_on_student_id"
-
   create_table "students", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"

@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Classes</h1>
+<hr>
+<%= link_to 'New Class', new_classname_path, :class => "btn btn-default btn-block" %>
+<hr>
 
 <% if @classnames.present? %>
   <%= render 'list' %>
@@ -9,5 +12,3 @@
 <% end %>
 
 <br>
-
-<%= link_to 'New Class', new_classname_path, :class => "button" %>

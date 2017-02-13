@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Student</h2>
+<div>
+  <h2 style="display: inline">Student</h2>
+  <div class="btn-group" style="float: right">
+    <%= link_to student_path(@student, :format => :pdf), :class => "button" do %>
+      <i class="glyphicon glyphicon-download-alt"></i>
+    <% end %>
+    <%= link_to edit_student_path(@student), :class => "button" do %>
+      <i class="glyphicon glyphicon-pencil"></i>
+    <% end %>
+  </div>
+</div>
 
 <p>
   <strong>Name:</strong>
@@ -24,39 +34,53 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @student.price %>
+  <% price = @student.price %>
+  <% @student.copies.each do |copy| %>
+  <% price =+ copy.book.price if copy.topay %>
+  <% end %>
+  <%= price %>
 </p>
+<hr>
 
-<h2>Books</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Label</th>
-      <th>Topay</th>
-      <th>Code</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @student.copies.to_ary.each do |copy| %>
-      <tr>
-        <td><%= copy.book.label %></td>
-        <td><%= copy.topay %></td>
-        <td><%= copy.code %></td>
-        <td>
-          <div>
-            <%= link_to 'Show', copy %>
-            <%= link_to 'Edit', edit_copy_path(copy) %>
-            <%= link_to 'Destroy', copy, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-        </td>
-      </tr>
+<div>
+  <h2 style="display: inline">Books</h2>
+  <div class="btn-group" style="float: right">
+    <%= link_to new_copy_path, :class => "button" do %>
+      <i class="glyphicon glyphicon-plus"></i>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
+<% if @student.copies.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Label</th>
+        <th>Topay</th>
+        <th>Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @student.copies.to_ary.each do |copy| %>
+        <tr>
+          <td><%= copy.book.label %></td>
+          <td><%= copy.topay %></td>
+          <td><%= copy.code %></td>
+          <td>
+            <div>
+              <%= link_to 'Show', copy %>
+              <%= link_to 'Edit', edit_copy_path(copy) %>
+              <%= link_to 'Destroy', copy, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no books present.</p>
+<% end %>
 
 <div class="btn-group">
-  <%= link_to 'Edit', edit_student_path(@student), :class => "button" %>
   <%= link_to 'Back', classname_path(@student.classname), :class => "button" %>
 </div>

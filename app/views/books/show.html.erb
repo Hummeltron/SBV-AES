@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @book.label %></h2>
+
 <p>
-  <strong>Label:</strong>
-  <%= @book.label %>
+  <%= image_tag( "/images/#{@book.label}.jpg", height:"300" , width:"200",:alt => "Picture missing" )%>
 </p>
 
 <p>
@@ -14,13 +15,6 @@
 <p>
   <strong>Isbn:</strong>
   <%= @book.isbn %>
-</p>
-
-
-<p>
-  <strong>Image:</strong>
- 
-  <%= image_tag( "/#{@book.label}.jpg", :alt => "Picture missing") %>
 </p>
 
 <div class="btn-group">

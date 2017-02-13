@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Books</h1>
+<hr>
+<%= link_to 'New Book', new_book_path, :class => "btn btn-default btn-block" %>
+<hr>
 
 <% if @books.present? %>
   <%= render 'list' %>
@@ -10,4 +13,3 @@
 
 <br>
 
-<%= link_to 'New Book', new_book_path, :class => "button" %><

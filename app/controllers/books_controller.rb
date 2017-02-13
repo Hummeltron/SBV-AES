@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy, :search]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :search, :attachment]
 
   # GET /books
   # GET /books.json
@@ -32,6 +32,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
+    upload_cover
 
     respond_to do |format|
       if @book.save
@@ -47,6 +48,10 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+    if params[:book][:attachment]
+      upload_cover
+    end
+    
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
@@ -79,5 +84,13 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:label, :price, :isbn, :image)
+    end
+    
+    def upload_cover
+      upload = params[:book][:attachment]
+      filename = Rails.root.join("public", "images", "#{@book.label}.jpeg")
+      File.open(filename, 'wb') do |file|
+        file.write(upload.read)
+      end
     end
 end

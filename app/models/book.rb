@@ -1,4 +1,6 @@
 class Book < ActiveRecord::Base
+    mount_uploader :image, AttachmentUploader
+    
     validates_presence_of :label
     validates_presence_of :isbn
     validates_numericality_of :price
