@@ -1,44 +1,39 @@
 @import "bootstrap-sprockets";
-//@import "bootstrap-fileinput";
 @import "bootstrap";
 
 table {
-    @extend .table;
-    @extend .table-striped;
+		@extend .table;
+		@extend .table-striped;
 }
 
 table tbody tr td {
-    margin: 0px auto;
-    vertical-align: middle;
+		margin: 0px auto;
+		vertical-align: middle;
 }
 
 table tbody tr td div {
-    @extend .btn-group;
-    float: right;
+		@extend .btn-group;
+		float: right;
 }
 
 .field {
-    @extend .form-group;
+		@extend .form-group;
 }
 
 select, input[type="number"], input[type="text"] {
-    @extend .form-control;
-}
-
-input[type="file"] {
-    
+		@extend .form-control;
 }
 
 .button, input[type="submit"], table tbody tr td div a {
-    @extend .btn;
-    @extend .btn-default;
+		@extend .btn;
+		@extend .btn-default;
 }
 
 #student_birth_1i, #student_birth_2i, #student_birth_3i {
-    width: 33%;
-    display: inline;
+		width: 33%;
+		display: inline;
 }
 
 .floating {
-    position: fixed;
+		position: fixed;
 }

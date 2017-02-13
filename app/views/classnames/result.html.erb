@@ -3,9 +3,9 @@
 <h1>Results for "<%= params[:search] %>"</h1>
 
 <% if @classnames.present? %>
-  <%= render 'list' %>
+	<%= render 'list' %>
 <% else %>
-  <p>No results for <strong><%= params[:search] %></strong></p>
+	<p>No results for <strong><%= params[:search] %></strong></p>
 <% end %>
 
 <br>

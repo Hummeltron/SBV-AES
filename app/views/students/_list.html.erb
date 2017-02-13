@@ -1,32 +1,32 @@
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Birth</th>
-      <th>Classname</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Surname</th>
+			<th>Birth</th>
+			<th>Classname</th>
+			<th>Price</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.name %></td>
-        <td><%= student.surname %></td>
-        <td><%= student.birth %></td>
-        <td><%= student.classname.full_name %></td>
-        <td><%= student.price %></td>
-        <td>
-          <%= check_box_tag "selected_ids[]", student.id, false %>
-          <!--<div>
-          <input type="checkbox" class="custom-control custom-checkbox custom-control-input id-checkbox"></input>
-            <%= link_to 'Show', student %>
-            <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>-->
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @students.each do |student| %>
+			<tr>
+				<td><%= student.name %></td>
+				<td><%= student.surname %></td>
+				<td><%= student.birth %></td>
+				<td><%= student.classname.full_name %></td>
+				<td><%= student.price %></td>
+				<td>
+					<%= check_box_tag "selected_ids[]", student.id, false %>
+					<!--<div>
+					<input type="checkbox" class="custom-control custom-checkbox custom-control-input id-checkbox"></input>
+						<%= link_to 'Show', student %>
+						<%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>-->
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>

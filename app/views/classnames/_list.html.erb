@@ -1,25 +1,25 @@
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Year</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Year</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @classnames.each do |classname| %>
-      <tr>
-        <td><%= classname.name %></td>
-        <td><%= classname.year %></td>
-        <td>
-          <div>
-            <%= link_to 'Show', classname %>
-            <%= link_to 'Edit', edit_classname_path(classname) %>
-            <%= link_to 'Destroy', classname, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @classnames.each do |classname| %>
+			<tr>
+				<td><%= classname.name %></td>
+				<td><%= classname.year %></td>
+				<td>
+					<div>
+						<%= link_to 'Show', classname %>
+						<%= link_to 'Edit', edit_classname_path(classname) %>
+						<%= link_to 'Destroy', classname, method: :delete, data: { confirm: 'Are you sure?' } %>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>

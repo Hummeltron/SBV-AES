@@ -3,25 +3,25 @@
 <h2><%= @book.label %></h2>
 
 <p>
-  <% if File.exist?(Rails.root.join("public", "images", "#{@book.label}.jpg")) %>
-    <%= image_tag("/images/#{@book.label}.jpg", height:"300" , width:"200",:alt => "An error occurred!") %>
-  <% else %>
-    <%= image_tag("/images/image-not-found.jpg", height:"300", width:"200",:alt => "An error occurred!") %>
-  <% end %>
+	<% if File.exist?(Rails.root.join("public", "images", "#{@book.label}.jpg")) %>
+		<%= image_tag("/images/#{@book.label}.jpg", height:"300" , width:"200",:alt => "An error occurred!") %>
+	<% else %>
+		<%= image_tag("/images/image-not-found.jpg", height:"300", width:"200",:alt => "An error occurred!") %>
+	<% end %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @book.price %>
+	<strong>Price:</strong>
+	<%= @book.price %>
 </p>
 
 
 <p>
-  <strong>Isbn:</strong>
-  <%= @book.isbn %>
+	<strong>Isbn:</strong>
+	<%= @book.isbn %>
 </p>
 
 <div class="btn-group">
-  <%= link_to 'Edit', edit_book_path(@book), :class => "button" %>
-  <%= link_to 'Back', books_path, :class => "button" %>
+	<%= link_to 'Edit', edit_book_path(@book), :class => "button" %>
+	<%= link_to 'Back', books_path, :class => "button" %>
 </div>

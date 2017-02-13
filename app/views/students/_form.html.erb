@@ -1,37 +1,37 @@
 <%= form_for(@student) do |f| %>
-  <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+	<% if @student.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
 
-      <ul>
-      <% @student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+			<% @student.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :surname %>
-    <%= f.text_field :surname %>
-  </div>
-  <div class="field">
-    <%= f.label :birth %>
-    <%= f.date_select :birth, :start_year => Time.zone.now.year - 30, :end_year => Time.zone.now.year + 1 %>
-  </div>
-  <div class="field">
-    <%= f.label :classname_id %>
-    <%= f.collection_select :classname_id, Classname.all, :id, :name, prompt: true %>
-  </div>
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.text_field :price %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :surname %>
+		<%= f.text_field :surname %>
+	</div>
+	<div class="field">
+		<%= f.label :birth %>
+		<%= f.date_select :birth, :start_year => Time.zone.now.year - 30, :end_year => Time.zone.now.year + 1 %>
+	</div>
+	<div class="field">
+		<%= f.label :classname_id %>
+		<%= f.collection_select :classname_id, Classname.all, :id, :name, prompt: true %>
+	</div>
+	<div class="field">
+		<%= f.label :price %>
+		<%= f.text_field :price %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
 <% end %>

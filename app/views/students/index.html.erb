@@ -8,13 +8,13 @@
 <hr>
 
 <% if @students.present? %>
-  <form>
-    <%= render 'list' %>
-    <input type="hidden" name="mode" class="mode" />
-    <input class="btn btn-default delete-btn" type="submit" name="commit" value="Delete" />
-  </form>
+	<form>
+		<%= render 'list' %>
+		<input type="hidden" name="mode" class="mode" />
+		<input class="btn btn-default delete-btn" type="submit" name="commit" value="Delete" />
+	</form>
 <% else %>
-  <p>No students found</p>
+	<p>No students found</p>
 <% end %>
 
 <br>

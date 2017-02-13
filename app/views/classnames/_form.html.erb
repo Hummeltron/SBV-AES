@@ -1,25 +1,25 @@
 <%= form_for(@classname) do |f| %>
-  <% if @classname.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@classname.errors.count, "error") %> prohibited this classname from being saved:</h2>
+	<% if @classname.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@classname.errors.count, "error") %> prohibited this classname from being saved:</h2>
 
-      <ul>
-      <% @classname.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+			<% @classname.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :year %>
-    <%= f.select :year, (Time.zone.now.year - 5)...(Time.zone.now.year + 1) %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Edit Class" %>
-  </div>
+	<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :year %>
+		<%= f.select :year, (Time.zone.now.year - 5)...(Time.zone.now.year + 1) %>
+	</div>
+	<div class="actions">
+		<%= f.submit "Edit Class" %>
+	</div>
 <% end %>
