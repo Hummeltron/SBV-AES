@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     if params[:search]
-      @students = Student.search(params[:id])
+      @students = Student.search(params[:search])
       render :result
     elsif params[:selected_ids]
       @students = Student.find(params[:selected_ids])
@@ -71,20 +71,20 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
       respond_to do |format|
         format.html
-        format.pdf do 
+        format.pdf do
           pdf = Prawn::Document.new
           pdf.text "#{@student.full_name}"
           pdf.text "#{@student.classname.full_name}", size: 12
           pdf.text "#{@student.birth}", size: 10
           pdf.text "\n"
-          
+
           arr = Array.new
           arr.push(["Buch", "Preis", "Code"])
           price = 0
@@ -96,11 +96,11 @@ class StudentsController < ApplicationController
               arr.push(["#{copy.book.label}", "0.0€", "#{copy.code}"])
             end
           end
-          
+
           pdf.table arr, :width => 540
           pdf.text "\n"
           pdf.text "Summe: #{price}€"
-    
+
           send_data pdf.render, filename: "Pdf", type: "application/pdf" , disposition: "inline"
         end
       end
