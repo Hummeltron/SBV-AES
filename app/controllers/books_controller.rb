@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     # @books = Book.all
-    
+
     if params[:search]
       @books = Book.search(params[:search])
       render :result
@@ -48,10 +48,8 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
-    if params[:book][:attachment]
-      upload_cover
-    end
-    
+    upload_cover
+
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Book was successfully updated.' }
@@ -66,7 +64,7 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
-    # Copy.find(@book.id).destroy 
+    # Copy.find(@book.id).destroy
     # TODO: Delete all corresponding copies to prevent errors
     @book.destroy
     respond_to do |format|
@@ -85,10 +83,13 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:label, :price, :isbn, :image)
     end
-    
+
     def upload_cover
+      if !params[:book][:attachment].present?
+          return
+      end
       upload = params[:book][:attachment]
-      filename = Rails.root.join("public", "images", "#{@book.label}.jpeg")
+      filename = Rails.root.join("public", "images", "#{@book.label}.jpg")
       File.open(filename, 'wb') do |file|
         file.write(upload.read)
       end
