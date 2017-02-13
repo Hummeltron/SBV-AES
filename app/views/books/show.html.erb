@@ -3,7 +3,11 @@
 <h2><%= @book.label %></h2>
 
 <p>
-  <%= image_tag( "/images/#{@book.label}.jpg", height:"300" , width:"200",:alt => "Picture missing" )%>
+  <% if File.exist?(Rails.root.join("public", "images", "#{@book.label}.jpg")) %>
+    <%= image_tag("/images/#{@book.label}.jpg", height:"300" , width:"200",:alt => "An error occurred!") %>
+  <% else %>
+    <%= image_tag("/images/image-not-found.jpg", height:"300", width:"200",:alt => "An error occurred!") %>
+  <% end %>
 </p>
 
 <p>

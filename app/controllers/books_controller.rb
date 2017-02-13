@@ -64,8 +64,11 @@ class BooksController < ApplicationController
   # DELETE /books/1
   # DELETE /books/1.json
   def destroy
+    cover = cover_path
+    File.delete(cover) if File.exist?(cover)
     # Copy.find(@book.id).destroy
     # TODO: Delete all corresponding copies to prevent errors
+
     @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
@@ -89,9 +92,13 @@ class BooksController < ApplicationController
           return
       end
       upload = params[:book][:attachment]
-      filename = Rails.root.join("public", "images", "#{@book.label}.jpg")
+      filename = cover_path
       File.open(filename, 'wb') do |file|
         file.write(upload.read)
       end
+    end
+
+    def cover_path
+      Rails.root.join("public", "images", "#{@book.label}.jpg")
     end
 end
