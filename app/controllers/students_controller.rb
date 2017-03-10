@@ -76,15 +76,18 @@ class StudentsController < ApplicationController
 		# Use callbacks to share common setup or constraints between actions.
 		def set_student
 			@student = Student.find(params[:id])
+			t = Time.new
 			respond_to do |format|
 				format.html
 				format.pdf do
 					pdf = Prawn::Document.new
+					
+					pdf.text "#{t}"	
 					pdf.text "#{@student.full_name}"
 					pdf.text "#{@student.classname.full_name}", size: 12
 					pdf.text "#{@student.birth}", size: 10
 					pdf.text "\n"
-
+					pdf.image 	Rails.root.join("public", "images", "AES.jpg"), :at => [510,740], :width => 50 
 					arr = Array.new
 					arr.push(["Buch", "Preis", "Code"])
 					price = 0

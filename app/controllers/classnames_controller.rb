@@ -69,12 +69,16 @@ class ClassnamesController < ApplicationController
 	private
 		def set_classname
 			@classname = Classname.find(params[:id])
+				t = Time.new
 			respond_to do |format|
 				format.html
 				format.pdf do
+					
 					pdf = Prawn::Document.new
+					pdf.text "#{t}"	
 					pdf.text "#{@classname.full_name}"
 					pdf.text "\n"
+					pdf.image 	Rails.root.join("public", "images", "AES.jpg"), :at => [510,740], :width => 50 
 					arr = Array.new
 
 					arr.push(["Schüler", "Geburtsdatum", "Preis"])
