@@ -75,7 +75,7 @@ class ClassnamesController < ApplicationController
 				format.pdf do
 					
 					pdf = Prawn::Document.new
-					pdf.text "#{t}"	
+					pdf.text "#{t.strftime("%Y-%m-%d")}"
 					pdf.text "#{@classname.full_name}"
 					pdf.text "\n"
 					pdf.image 	Rails.root.join("public", "images", "AES.jpg"), :at => [510,740], :width => 50 

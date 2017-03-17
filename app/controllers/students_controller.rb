@@ -82,7 +82,8 @@ class StudentsController < ApplicationController
 				format.pdf do
 					pdf = Prawn::Document.new
 					
-					pdf.text "#{t}"	
+						
+					pdf.text "#{t.strftime("%Y-%m-%d")}"	
 					pdf.text "#{@student.full_name}"
 					pdf.text "#{@student.classname.full_name}", size: 12
 					pdf.text "#{@student.birth}", size: 10
@@ -93,7 +94,7 @@ class StudentsController < ApplicationController
 					price = 0
 					@student.copies.to_ary.each do |copy|
 						if copy.topay
-							arr.push(["#{copy.book.label}", "#{copy.book.price}€", "#{copy.code}"])
+							arr.push(["#{copy.book.label}", "#{copy.book.price == 1? "Leihbuch": copy.book.price}", "#{copy.code}"])
 							price += copy.book.price
 						else
 							arr.push(["#{copy.book.label}", "0.0€", "#{copy.code}"])
