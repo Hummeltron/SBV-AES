@@ -13,7 +13,11 @@
     <% @copies.each do |copy| %>
       <tr>
         <td><%= copy.book.label %></td>
-        <td><%= copy.student.full_name %></td>
+        <% if copy.student == nil %>
+          <td>No student assigned</td>
+        <% else %>
+          <td><%= copy.student.full_name %></td>
+        <% end %>
         <td><%= copy.topay %></td>
         <td><%= copy.code %></td>
         <td>
