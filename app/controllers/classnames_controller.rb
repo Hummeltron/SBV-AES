@@ -87,7 +87,7 @@ class ClassnamesController < ApplicationController
 							student.copies.each do |copy|
 								price += copy.book.price if copy.topay
 							end
-							arr.push(["#{student.full_name}", "#{student.birth}", "#{price}€"])
+							arr.push(["#{student.full_name}", "#{student.birth}", "#{'%.2f'%price}€"])
 					end
 
 					 pdf.table arr, :width => 540

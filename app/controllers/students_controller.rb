@@ -70,8 +70,7 @@ class StudentsController < ApplicationController
 			format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
 			format.json { head :no_content }
 		end
-	end
-
+	end 
 	private
 		# Use callbacks to share common setup or constraints between actions.
 		def set_student
@@ -94,7 +93,7 @@ class StudentsController < ApplicationController
 					price = 0
 					@student.copies.to_ary.each do |copy|
 						if copy.topay
-							arr.push(["#{copy.book.label}", "#{copy.book.price == 1? "Leihbuch": copy.book.price}", "#{copy.code}"])
+							arr.push(["#{copy.book.label}", "#{copy.book.price == 1? "Leihen": '%.2f'% copy.book.price}", "#{copy.code}"])
 							price += copy.book.price
 						else
 							arr.push(["#{copy.book.label}", "0.0€", "#{copy.code}"])
@@ -103,7 +102,7 @@ class StudentsController < ApplicationController
 
 					pdf.table arr, :width => 540
 					pdf.text "\n"
-					pdf.text "Summe: #{price}€"
+					pdf.text "Summe: #{'%.2f'% price}€"
 
 					send_data pdf.render, filename: "Pdf", type: "application/pdf" , disposition: "inline"
 				end
