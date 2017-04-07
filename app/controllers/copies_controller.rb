@@ -59,7 +59,7 @@ class CopiesController < ApplicationController
 	# DELETE /copies/1
 	# DELETE /copies/1.json
 	def destroy
-		@copy.destroy
+		@copy.update_attribute(:student_id, nil);
 		respond_to do |format|
 			format.html { redirect_to copies_url, notice: 'Copy was successfully destroyed.' }
 			format.json { head :no_content }
