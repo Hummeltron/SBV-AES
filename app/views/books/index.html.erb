@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Books</h1>
-<hr>
-<%= link_to 'Neues Buch', new_book_path, :class => "btn btn-default btn-block" %>
-<hr>
-
-<% if @books.present? %>
-	<%= render 'list' %>
-<% else %>
-	<p>No books found</p>
-<% end %>
-
-<br>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title" style="display:inline">Bücher</h3>
+    <%= link_to 'Neues Buch', new_book_path, :class => "btn btn-default pull-right" %>
+  </div>
+  <% if @books.present? %>
+	  <%= render 'list' %>
+  <% else %>
+	  <p>Keine Bücher vorhanden</p>
+  <% end %>
+</div>

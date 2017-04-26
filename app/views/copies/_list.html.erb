@@ -1,32 +1,29 @@
 <table>
   <thead>
     <tr>
-      <th>Book</th>
-      <th>Student</th>
-      <th>Topay</th>
-      <th>Code</th>
+      <th>#</th>
+      <th>Buch</th>
+      <th>Schüler</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @copies.each do |copy| %>
       <tr>
+        <td><%= copy.id %></td>
         <td><%= copy.book.label %></td>
-        <% if copy.student == nil %>
-          <td>No student assigned</td>
-        <% else %>
-          <td><%= copy.student.full_name %></td>
-        <% end %>
-        <td><%= copy.topay %></td>
-        <td><%= copy.code %></td>
         <td>
-          <div>
-            <%= link_to 'Anzeigen', copy %>
-            <%= link_to 'Bearbeiten', edit_copy_path(copy) %>
-            <%= link_to 'Löschen', copy, method: :delete, data: { confirm: 'Ich will nicht sterben?' } %>
-          </div>
+          <% if copy.student == nil %>
+            -
+          <% else %>
+            <%= copy.student.full_name %>
+          <% end %>
         </td>
+        <td><div>
+          <%= link_to 'Anzeigen', copy %>
+          <%= link_to 'Bearbeiten', edit_copy_path(copy) %>
+          <%= link_to 'Löschen', copy, method: :delete, data: { confirm: 'Ich will nicht sterben?' } %>
+        </div></td>
       </tr>
     <% end %> 
   </tbody>

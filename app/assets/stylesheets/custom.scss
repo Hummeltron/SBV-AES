@@ -4,6 +4,7 @@
 table {
 		@extend .table;
 		@extend .table-striped;
+		@extend .table-hover;
 }
 
 table tbody tr td {
@@ -36,4 +37,8 @@ select, input[type="number"], input[type="text"] {
 
 .floating {
 		position: fixed;
+}
+
+.right {
+	float: right;
 }

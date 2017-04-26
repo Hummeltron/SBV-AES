@@ -1,20 +1,13 @@
-<%= javascript_include_tag "select.js" %>
-
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Students</h1>
-<hr>
-<%= link_to 'New Student', new_student_path, :class => "btn btn-default btn-block" %>
-<hr>
-
-<% if @students.present? %>
-	<form>
-		<%= render 'list' %>
-		<input type="hidden" name="mode" class="mode" />
-		<input class="btn btn-default delete-btn" type="submit" name="commit" value="Delete" />
-	</form>
-<% else %>
-	<p>No students found</p>
-<% end %>
-
-<br>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title" style="display:inline">Schüler</h3>
+    <%= link_to 'Neuer Schüler', new_student_path, :class => "btn btn-default pull-right" %>
+  </div>
+  <% if @students.present? %>
+	  <%= render 'list' %>
+  <% else %>
+	  <p>Keine Schüler vorhanden</p>
+  <% end %>
+</div>
