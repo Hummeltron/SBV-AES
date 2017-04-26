@@ -73,24 +73,63 @@ class ClassnamesController < ApplicationController
 			respond_to do |format|
 				format.html
 				format.pdf do
-					
 					pdf = Prawn::Document.new
+					
 					pdf.text "#{t.strftime("%Y-%m-%d")}"
 					pdf.text "#{@classname.full_name}"
 					pdf.text "\n"
-					pdf.image 	Rails.root.join("public", "images", "AES.jpg"), :at => [510,740], :width => 50 
-					arr = Array.new
-
-					arr.push(["Schüler", "Geburtsdatum", "Preis"])
+					pdf.image Rails.root.join("public", "images", "AES.jpg"), :at => [510,740], :width => 50 
+					
+					books = Array.new
+					books_id = Array.new
+					
 					@classname.students.to_ary.each do |student|
-							price = student.price
-							student.copies.each do |copy|
-								price += copy.book.price if copy.topay
+						student.copies.to_ary.each do |copy|
+							if not books.include? copy.book.label
+								books.push(copy.book.label)
+								if books.count < 10
+									books_id.push("0#{books.count}")
+								else
+									books_id.push("#{books.count}")
+								end
 							end
-							arr.push(["#{student.full_name}", "#{student.birth}", "#{'%.2f'%price}€"])
+						end
 					end
-
-					 pdf.table arr, :width => 540
+					
+					table = Array.new
+					table.push(["Name"].concat(books_id))
+					
+					@classname.students.to_ary.each do |student|
+						value = ""
+						rows = Array.new
+						books.each do |book|
+							student.copies.to_ary.each do |copy|
+								if copy.book.label == book
+									value = "X"
+									break
+								else
+									value = ""
+								end
+							end
+							rows.push(value)
+						end
+						table.push(["#{student.full_name}"].concat(rows))
+					end
+			
+					pdf.table table, :cell_style => { :size => 8 }, :row_colors => ["F0F0F0", "FFFFCC"], :width => 540
+					
+					legend = Array.new
+					
+					legend.push(["Id", "Name"])
+					
+					(0..books.count).each do |i|
+						legend.push([books_id[i], books[i]])
+					end
+					
+					pdf.text "\n"
+					
+					pdf.table legend, :cell_style => { :size => 8, :overflow => :shrink_to_fit }, :row_colors => ["F0F0F0", "FFFFCC"]
+					
 					send_data pdf.render, filename: "Pdf", type: "application/pdf" , disposition: "inline"
 				end
 			end
