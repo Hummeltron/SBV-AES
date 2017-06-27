@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20161125150905) do
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "topay"
   end
 
   create_table "classnames", force: :cascade do |t|
@@ -34,8 +35,8 @@ ActiveRecord::Schema.define(version: 20161125150905) do
     t.integer  "student_id"
     t.boolean  "topay"
     t.integer  "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "students", force: :cascade do |t|

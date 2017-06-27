@@ -75,6 +75,23 @@ class BooksController < ApplicationController
 			format.json { head :no_content }
 		end
 	end
+	
+	def genlist
+		t = Time.new
+		@books = Book.all
+		pdf = Prawn::Document.new
+		pdf.text "#{t.strftime("%Y-%m-%d")}"	
+		pdf.text "\n"
+		pdf.image 	Rails.root.join("public", "images", "AES.jpg"), :at => [510,740], :width => 50 
+		arr = Array.new
+		arr.push(["Buch", "Preis"])
+		price = 0
+		@books.to_ary.each do |book|
+			arr.push(["#{book.label}","#{book.price}€"])
+		end
+		pdf.table arr, :cell_style => { :size => 8 }, :row_colors => ["F0F0F0", "FFFFCC"], :width => 540
+		send_data pdf.render, filename: "Pdf", type: "application/pdf" , disposition: "inline"
+	end
 
 	private
 		# Use callbacks to share common setup or constraints between actions.
@@ -84,9 +101,9 @@ class BooksController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def book_params
-			params.require(:book).permit(:label, :price, :isbn, :image)
+			params.require(:book).permit(:label, :price, :topay, :isbn, :image)
 		end
-
+		
 		def upload_cover
 			if !params[:book][:attachment].present?
 					return

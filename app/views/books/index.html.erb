@@ -3,7 +3,10 @@
 <div class="panel panel-default">
   <div class="panel-heading clearfix">
     <h3 class="panel-title" style="display:inline">Bücher</h3>
-    <%= link_to 'Neues Buch', new_book_path, :class => "btn btn-default pull-right" %>
+    <div class="btn-group right">
+    	<%= link_to 'Neues Buch', new_book_path, :class => "btn btn-default" %>
+    	<%= link_to 'Bücherliste', book_list_path, :class => "btn btn-default" %>
+    </div>
   </div>
   <% if @books.present? %>
 	  <%= render 'list' %>

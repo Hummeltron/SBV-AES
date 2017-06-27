@@ -42,3 +42,7 @@ select, input[type="number"], input[type="text"] {
 .right {
 	float: right;
 }
+
+#copies li {
+	@extend .list-group-item;
+}

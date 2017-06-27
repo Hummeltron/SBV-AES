@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-	before_action :set_student, only: [:show, :edit, :update, :destroy, :search, :selected_ids, :mode]
+	before_action :set_student, only: [:show, :edit, :update, :destroy]
 
 	# GET /students
 	# GET /students.json
@@ -15,6 +15,24 @@ class StudentsController < ApplicationController
 			redirect_to students_url, :notice => "Destroyed Students"
 		else
 			@students = Student.all
+		end
+	end
+	
+	def assign_copies
+		@student = Student.find(params[:id])
+		
+		if params[:copy_ids]
+			copy_ids = params[:copy_ids].split(',')
+			copy_ids.each do |copy|
+				if params[:mode] == "1"
+					Copy.find(copy).update_attribute(:student_id, nil);
+				else
+					Copy.update(copy, :student_id => params[:id])
+					Copy.update(copy, :topay => Copy.find(copy).book.topay)
+				end
+			end
+			
+			redirect_to @student
 		end
 	end
 
@@ -93,7 +111,8 @@ class StudentsController < ApplicationController
 					price = 0
 					@student.copies.to_ary.each do |copy|
 						if copy.topay
-							arr.push(["#{copy.book.label}", "#{copy.book.price == 1? "Leihen": '%.2f'% copy.book.price}", "#{copy.code}"])
+							#arr.push(["#{copy.book.label}", "#{copy.book.price == 1? "Leihen": '%.2f'% copy.book.price}", "#{copy.code}"])
+							arr.push(["#{copy.book.label}", "#{'%.2f'% copy.book.price}€", "#{copy.code}"])
 							price += copy.book.price
 						else
 							arr.push(["#{copy.book.label}", "0.0€", "#{copy.code}"])
@@ -108,7 +127,6 @@ class StudentsController < ApplicationController
 				end
 			end
 		end
-
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def student_params
 			params.require(:student).permit(:name, :surname, :birth, :classname_id, :price)

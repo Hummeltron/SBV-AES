@@ -5,10 +5,14 @@ Rails.application.routes.draw do
   resources :classnames
   
   get '/' => 'classnames#index'
-  get '/copies' => 'copies#index'
-  get '/books' => 'books#index'
-  get '/students' => 'students#index'
-  get '/classes' => 'classnames#index'
+  #get '/copies' => 'copies#index'
+  #get '/books' => 'books#index'
+  #get '/students' => 'students#index'
+  #get '/classnames' => 'classnames#index'
+  get '/booklist.pdf', to: 'books#genlist', as: 'book_list'
+  get '/classnames/:id/price.pdf', to: 'classnames#genprices', as: 'classname_price'
+  get '/classnames/:id/list.pdf', to: 'classnames#genlists', as: 'classname_list'
+  post '/students/:id/assign_copies', to: 'students#assign_copies', as: 'student_assign'
   
   #get 'classnames#download_pdf'
   

@@ -5,6 +5,7 @@ class CreateBooks < ActiveRecord::Migration
       t.float :price
       t.string :isbn
       t.string :image
+      t.boolean :topay
 
       t.timestamps null: false
     end

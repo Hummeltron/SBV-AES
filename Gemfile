@@ -31,7 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'prawn', '~> 2.0', '>= 2.0.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'barby', '~> 0.6.5'
+gem 'chunky_png', '~> 1.3', '>= 1.3.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
