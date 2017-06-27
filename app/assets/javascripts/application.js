@@ -73,4 +73,8 @@ $(document).ready(function() {
         $('#copy_ids').val(ids.toString());
         $('#copy_form').submit();
     });
+    
+    $('#copySearch').on("submit", function() {
+        alert("Not yet implemented");
+    })
 });
