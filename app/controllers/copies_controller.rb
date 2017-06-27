@@ -80,6 +80,7 @@ private
 		@copy = Copy.find(params[:id])
 		
 		respond_to do |format|
+			format.json
 			format.html
 			format.pdf do
 				# hier noch das format spezifizieren

@@ -59,20 +59,19 @@
 				<h4 class="modal-title">Bücher bearbeiten</h4>
 			</div>
 			<div class="modal-body">
-				<%= form_tag student_assign_path(@student), :id => "copy_assign_form" do %>
+				<%= form_tag student_assign_path(@student), :id => "copy_form" do %>
 					<%= hidden_field_tag :copy_ids, [] %>
 					<%= hidden_field_tag :mode %>
 				<% end %>
-				<br/>
-				<form onSubmit="return addCopy();">
-					<input type="number" id="copyId" class="form-control" />
+				<form id="editCopies">
+					<input type="number" id="copyInputField" class="form-control" />
 				</form>
 				<ul id="copies" class="list-group"></ul>
       		</div>
       		<div class="modal-footer">
-      			<button type="button" onClick="dismissCopies()" class="btn btn=default" data-dismiss="modal">Abbrechen</button>
-      			<button type="button" onClick="unassignCopies()" class="btn btn-danger" data-dismiss="modal">Zurückgeben</button>
-        		<button type="button" onClick="assignCopies()" class="btn btn-primary" data-dismiss="modal">Ausleihen</button>
+      			<button id="cancelBtn" type="button" class="btn btn=default" data-dismiss="modal">Abbrechen</button>
+      			<button id="unassignBtn" type="button" class="btn btn-danger" data-dismiss="modal">Zurückgeben</button>
+        		<button id="assignBtn" type="button" class="btn btn-primary" data-dismiss="modal">Ausleihen</button>
       		</div>
 		</div>
 	</div>

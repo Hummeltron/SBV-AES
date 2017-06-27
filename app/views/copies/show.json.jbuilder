@@ -1,1 +1,2 @@
-json.partial! "copies/copy", copy: @copy
+json.label @copy.book.label
+json.owner @copy.student == nil ? "Verfügbar" : @copy.student.full_name
