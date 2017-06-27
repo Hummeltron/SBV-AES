@@ -119,7 +119,7 @@ class StudentsController < ApplicationController
 						end
 					end
 
-					pdf.table arr, :width => 540
+					pdf.table arr, :cell_style => { :size => 8 }, :row_colors => ["F0F0F0", "FFFFCC"], :width => 540
 					pdf.text "\n"
 					pdf.text "Summe: #{'%.2f'% price}€"
 
