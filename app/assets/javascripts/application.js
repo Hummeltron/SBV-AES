@@ -40,7 +40,9 @@ $(document).ready(function() {
         fetch("/copies/" + id + ".json", fetchData)
             .then((resp) => resp.json())
             .then(function(data) {
-                $('#copies').append("<li id=" + id + ">" + id + " - " + data.label + " [" + data.owner + "]</li>");
+                $('#copies').append("<button type='button' class='list-group-item' id="
+                    + id + ">" + id + " - " + data.label
+                    + " [" + data.owner + "]</button>");
                 $('#' + id).click(function() {
                     $('#' + id).remove();
                     
