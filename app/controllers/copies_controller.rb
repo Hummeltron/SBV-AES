@@ -1,5 +1,5 @@
 class CopiesController < ApplicationController
-	before_action :set_copy, only: [:show, :edit, :destroy]
+	before_action :set_copy, only: [:show, :edit]
 
 	# GET /copies
 	# GET /copies.json
@@ -67,6 +67,8 @@ class CopiesController < ApplicationController
 	# DELETE /copies/1
 	# DELETE /copies/1.json
 	def destroy
+		@copy = Copy.find(params[:id])
+		
 		@copy.destroy#.update_attribute(:student_id, nil);
 		respond_to do |format|
 			format.html { redirect_to copies_url, notice: 'Kopie erfolgreich entfernt.' }
@@ -109,6 +111,6 @@ private
 	end
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def copy_params
-		params.require(:copy).permit(:book_id, :student_id, :topay, :code)
+		params.require(:copy).permit(:book_id, :student_id, :topay)
 	end
 end

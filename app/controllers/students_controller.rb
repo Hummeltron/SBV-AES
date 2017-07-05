@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-	before_action :set_student, only: [:show, :edit, :update, :destroy]
+	before_action :set_student, only: [:show, :edit, :destroy]
 
 	# GET /students
 	# GET /students.json
@@ -69,6 +69,8 @@ class StudentsController < ApplicationController
 	# PATCH/PUT /students/1
 	# PATCH/PUT /students/1.json
 	def update
+		@student = Student.find(params[:id])
+		
 		respond_to do |format|
 			if @student.update(student_params)
 				format.html { redirect_to @student, notice: 'Student was successfully updated.' }
@@ -112,10 +114,10 @@ class StudentsController < ApplicationController
 					@student.copies.to_ary.each do |copy|
 						if copy.topay
 							#arr.push(["#{copy.book.label}", "#{copy.book.price == 1? "Leihen": '%.2f'% copy.book.price}", "#{copy.code}"])
-							arr.push(["#{copy.book.label}", "#{'%.2f'% copy.book.price}€", "#{copy.code}"])
+							arr.push(["#{copy.book.label}", "#{'%.2f'% copy.book.price}€", "#{copy.id}"])
 							price += copy.book.price
 						else
-							arr.push(["#{copy.book.label}", "0.0€", "#{copy.code}"])
+							arr.push(["#{copy.book.label}", "0.0€", "#{copy.id}"])
 						end
 					end
 
