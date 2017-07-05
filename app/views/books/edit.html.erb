@@ -1,8 +1,13 @@
-<h1>Editing Book</h1>
-
-<%= render 'form' %>
-
-<div class="btn-group">
-	<%= link_to 'Anzeigen', @book, :class => "button" %>
-	<%= link_to 'Zurück', books_path, :class => "button" %>
+<div class="panel panel-default">
+	<div class="panel-heading clearfix">
+		<h3 class="panel-title" style="display:inline">Buch bearbeiten</h3>
+	</div>
+	<div class="panel-body">
+		<%= render 'form' %>
+	</div>
+	<div class="panel-footer">
+		<div class="btn-group">
+			<%= link_to 'Zurück', book_path(@book), :class => "button" %>
+		</div>
+	</div>
 </div>

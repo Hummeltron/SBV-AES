@@ -12,22 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :book_id %>
+    <%= f.label "Buch" %>
     <%= f.collection_select :book_id, Book.all, :id, :label, prompt: true %>
   </div>
   <div class="field">
-    <%= f.label :student_id %>
+    <%= f.label "Schüler" %>
     <%= f.collection_select :student_id, Student.all, :id, :full_name, prompt: true %>
   </div>
   <div class="field">
-    <%= f.label :topay %>
+    <%= f.label "Kaufbuch" %>
     <%= f.check_box :topay %>
   </div>
-  <div class="field">
-    <%= f.label :code %>
-    <%= f.number_field :code %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Speichern" %>
   </div>
 <% end %>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>
 
 <div>
 	<h2 style="display: inline">Student</h2>
@@ -109,4 +109,85 @@
 
 <div class="btn-group">
 	<%= link_to 'Zurück', classname_path(@student.classname), :class => "button" %>
+</div>-->
+
+<% if notice != nil %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title" style="display:inline"><%= @student.full_name %></h3>
+    <div class="btn-group right">
+    	<%= link_to student_path(@student, :format => :pdf), :class => "button" do %>
+			<i class="glyphicon glyphicon-download-alt"></i>
+		<% end %>
+		<%= link_to "Bearbeiten", edit_student_path(@student), :class => "button" %>
+    </div>
+  </div>
+  <div class="panel-body">
+  	<strong>Klasse:</strong>
+  	</br>
+  	<%= @student.classname.full_name %>
+  	</br>
+  	</br>
+  	<strong>Geburtsdatum:</strong>
+  	</br>
+  	<%= @student.birth %>
+  	</br>
+  	</br>
+  	<strong>Preis:</strong>
+  	</br>
+  	<% price = @student.price %>
+	<% @student.copies.each do |copy| %>
+	<% price =+ copy.book.price if copy.topay %>
+	<% end %>
+	<%= price %>€
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title" style="display:inline">Bücher</h3>
+    <div class="btn-group right">
+    	<button type="button" class="button" data-toggle="modal" data-target="#copyModal">Scannen</button>
+    </div>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group" style="margin:0px">
+      <% @student.copies.to_ary.each do |copy| %>
+        <%= link_to copy.id.to_s + " - " + copy.book.label, copy, class: "list-group-item" %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="panel-footer">
+  	<% if @student.classname != nil %>
+      <%= link_to "Zurück", classname_path(@student.classname), :class => "btn btn-default" %>
+    <% else %>
+      <%= link_to "Zurück", students_path, :class => "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<div id="copyModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Bücher bearbeiten</h4>
+			</div>
+			<div class="modal-body">
+				<%= form_tag student_assign_path(@student), :id => "copy_form" do %>
+					<%= hidden_field_tag :copy_ids, [] %>
+					<%= hidden_field_tag :mode %>
+				<% end %>
+				<form id="editCopies">
+					<input type="number" id="copyInputField" class="form-control" />
+				</form>
+				<ul id="copies" class="list-group"></ul>
+      		</div>
+      		<div class="modal-footer">
+      			<button id="cancelBtn" type="button" class="btn btn=default" data-dismiss="modal">Abbrechen</button>
+      			<button id="unassignBtn" type="button" class="btn btn-danger" data-dismiss="modal">Zurückgeben</button>
+        		<button id="assignBtn" type="button" class="btn btn-primary" data-dismiss="modal">Ausleihen</button>
+      		</div>
+		</div>
+	</div>
 </div>

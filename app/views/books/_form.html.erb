@@ -12,30 +12,29 @@
 	<% end %>
 
 	<div class="field">
-		<%= f.label :label %>
+		<%= f.label "Titel" %>
 		<%= f.text_field :label %>
 	</div>
 	<div class="field">
-		<%= f.label :price %>
-		<%= f.number_field :price %>
+		<%= f.label "Preis" %>
+		<div class="input-group">
+			<%= f.number_field :price, step: 0.01 %>
+			<span class="input-group-addon">€</span>
+		</div>
 	</div>
 	<div class="field">
-		<%= f.label :topay %>
-		<%= f.number_field :topay %>
+		<%= f.label "Kaufbuch" %>
+		<%= f.check_box :topay %>
 	</div>
 	<div class="field">
-		<%= f.label :isbn %>
+		<%= f.label "ISBN" %>
 		<%= f.text_field :isbn %>
 	</div>
-	<!--<div class="field">
-		<%= f.label :image %>
-		<%= f.text_field :image %>
-	</div>-->
 	<div class="field">
-		<%= f.label :attachment %>
+		<%= f.label "Bild" %>
 		<%= f.file_field :attachment %>
 	</div>
 	<div class="actions">
-		<%= f.submit %>
+		<%= f.submit "Speichern", class: "btn btn-info" %>
 	</div>
 <% end %>

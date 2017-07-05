@@ -1,31 +1,44 @@
-<p id="notice"><%= notice %></p>
-
-<h2><%= @book.label %></h2>
-
-<p>
-	<% if File.exist?(Rails.root.join("public", "images", "#{@book.label}.jpg")) %>
-		<%= image_tag("/images/#{@book.label}.jpg", height:"300" , width:"200",:alt => "An error occurred!") %>
-	<% else %>
-		<%= image_tag("/images/image-not-found.jpg", height:"300", width:"200",:alt => "An error occurred!") %>
-	<% end %>
-</p>
-
-<p>
-	<strong>Price:</strong>
-	<%= @book.price %>
-</p>
-
-<p>
-	<strong>Topay</strong>
-	<%= @book.topay %>
-</p>
-
-<p>
-	<strong>Isbn:</strong>
-	<%= @book.isbn %>
-</p>
-
-<div class="btn-group">
-	<%= link_to 'Bearbeiten', edit_book_path(@book), :class => "button" %>
-	<%= link_to 'Zurück', books_path, :class => "button" %>
+<% if notice != nil %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<div class="panel panel-default">
+	<div class="panel-heading clearfix">
+		<h3 class="panel-title" style="display:inline"><%= @book.label %></h3>
+		<div class="btn-group pull-right">
+			<%= link_to 'Bearbeiten', edit_book_path(@book), :class => "button" %>
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="media">
+			<div class="media-left media-top">
+				<% if File.exist?(Rails.root.join("public", "images", "#{@book.label}.jpg")) %>
+					<%= image_tag "/images/#{@book.label}.jpg", height:"300" , width:"200", class: "media-object", :alt => "An error occurred!" %>
+				<% else %>
+					<%= image_tag "/images/image-not-found.jpg", height:"300", width:"200", class: "media-object" ,:alt => "An error occurred!" %>
+				<% end %>
+			</div>
+			<div class="media-body">
+				<p>
+					<strong>Preis:</strong>
+					</br>
+					<%= @book.price %>€
+				</p>
+				<p>
+					<strong>Kaufbuch:</strong>
+					</br>
+					<%= @book.topay == true ? "Ja" : "Nein" %>
+				</p>
+				<p>
+					<strong>ISBN:</strong>
+					</br>
+					<%= @book.isbn %>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="btn-group">
+			<%= link_to 'Zurück', books_path, :class => "button" %>
+		</div>	
+	</div>
 </div>
