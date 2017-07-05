@@ -18,13 +18,11 @@
 
 var ids = [];
 
-$(document).ready(function() {
-    const url = window.location.host;
-    
+document.addEventListener("turbolinks:load", function() {
     $('#copyModal').on('show.bs.modal', function() {
         ids = [];
         $('#copies').empty();
-    })
+    });
     
     $('#copyModal').on('shown.bs.modal', function() {
         $('#copyInputField').focus();
@@ -78,5 +76,5 @@ $(document).ready(function() {
     
     $('#copySearch').on("submit", function() {
         alert("Not yet implemented");
-    })
+    });
 });
