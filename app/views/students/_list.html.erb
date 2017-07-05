@@ -2,10 +2,7 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Surname</th>
-			<th>Birth</th>
-			<th>Classname</th>
-			<th>Price</th>
+			<th>Klasse</th>
 			<th colspan="3"></th>
 		</tr>
 	</thead>
@@ -13,11 +10,8 @@
 	<tbody>
 		<% @students.each do |student| %>
 			<tr>
-				<td><%= student.name %></td>
-				<td><%= student.surname %></td>
-				<td><%= student.birth %></td>
+				<td><%= student.full_name %></td>
 				<td><%= student.classname.full_name %></td>
-				<td><%= student.price %></td>
 				<td>
 					<div>
 						<%= link_to 'Anzeigen', student %>
