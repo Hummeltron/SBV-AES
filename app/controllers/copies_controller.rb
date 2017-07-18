@@ -93,7 +93,7 @@ private
 		
 				# herausfinden welche barcode klasse wir benoetigen
 				# bzw welche der sensor kann
-				barcode = Barby::Code128B.new(@copy.code)
+				barcode = Barby::Code128B.new(@copy.id)
 				
 				require 'barby/outputter/prawn_outputter'
 				outputter = Barby::PrawnOutputter.new(barcode);
