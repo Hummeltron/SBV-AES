@@ -31,20 +31,88 @@ class CopiesController < ApplicationController
 	# GET /copies/1/edit
 	def edit
 	end
+	
+	def create_pdf(copy_ids)
+		# set these values according to the required printer page sizes
+		printer_width = 150
+		printer_height = 120
+		
+		if copy_ids.empty?
+			redirect_to copies_url, notice: "No copy ids privided"
+		else
+			pdf = Prawn::Document::new(:page_size => [printer_width, printer_height])
+			
+			first_item = true
+			
+			copy_ids.each do |copy_id|
+				# Generate barcode
+				require 'barby'
+				require 'barby/barcode/code_128'
+				require 'barby/outputter/prawn_outputter'
+				
+				barcode = Barby::Code128B.new(copy_id)
+				
+				outputter = Barby::PrawnOutputter.new(barcode)
+				
+				if first_item
+					first_item = false
+				else
+					pdf.start_new_page
+				end
+				
+				#pdf = outputter.annotate_pdf(pdf, opts = { :x => -16, :y => printer_height - outputter.height * 2, :xdim => printer_width / outputter.width })
+				#pdf.text_box "#{copy_id}", :at => [0, 0], :width => printer_width / 2, :height => printer_height - outputter.height, :align => :center, :size => 24
+				
+				xpos = -20
+				ypos = 15
+				dim = 1.5
+				
+				pdf = outputter.annotate_pdf(pdf, opts = { x: xpos, y: ypos, xdim: dim })
+				
+				pdf.text_box "#{copy_id}", :at => [0, 0], :width => printer_width / 2, :height => printer_height - outputter.height - 15, :align => :center, :size => 24
+			end
+			
+			send_data pdf.render, filename: "Pdf", type: "application/pdf" , disposition: "inline"
+		end
+	end
 
 	# POST /copies
 	# POST /copies.json
 	def create
-		@copy = Copy.new(copy_params)
-
-		respond_to do |format|
-			if @copy.save
-				format.html { redirect_to @copy, notice: 'Copy was successfully created.' }
-				format.json { render :show, status: :created, location: @copy }
+		count = params[:count].to_i
+		
+		#copy_params.new(:student_id => nil)
+		
+		new_copies = Array.new
+		
+		failed = false
+		
+		for i in 1..count do
+			copy = Copy.new(copy_params)
+			
+			if copy.save(validate: false)
+				new_copies.push(copy)
 			else
-				format.html { render :new }
-				format.json { render json: @copy.errors, status: :unprocessable_entity }
+				failed = true
+				break
 			end
+		end
+		
+		if failed
+			new_copies.each do |copy|
+				copy.delete
+			end
+			
+			redirect_to copies_url, notice: "Failed to create copies"
+		else
+			# All copies haven been created properly
+			pdf_copies = Array.new
+			
+			new_copies.each do |copy|
+				pdf_copies.push(copy.id)
+			end
+			
+			create_pdf(pdf_copies)
 		end
 	end
 
@@ -85,27 +153,7 @@ private
 			format.json
 			format.html
 			format.pdf do
-				# hier noch das format spezifizieren
-				pdf = Prawn::Document.new(:page_size => [150, 150])
-				
-				require 'barby'
-				require 'barby/barcode/code_128'
-		
-				# herausfinden welche barcode klasse wir benoetigen
-				# bzw welche der sensor kann
-				barcode = Barby::Code128B.new(@copy.id)
-				
-				require 'barby/outputter/prawn_outputter'
-				outputter = Barby::PrawnOutputter.new(barcode);
-				
-				# hier in to_pdf(pdf, <options>) x, y etc einfuegen https://github.com/toretore/barby/wiki/Outputters
-				# oder http://www.rubydoc.info/github/toretore/barby/Barby/PrawnOutputter
-				pdf = outputter.annotate_pdf(pdf, opts = { :x => 0, :y => 20})
-				
-				# hier noch die position so setzen das sie mittig unter dem barcode ist
-				pdf.draw_text"#{@copy.code}", :at => [30,0]
-				
-				send_data pdf.render, filename: "Pdf", type: "application/pdf" , disposition: "inline"
+				create_pdf([@copy.id])
 			end
 		end
 	end
