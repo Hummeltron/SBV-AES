@@ -67,10 +67,10 @@ class CopiesController < ApplicationController
 				ypos = 15
 				dim = 1
 				
-				if copy_id > 10
-					if copy_id > 100
-						if copy_id > 1000
-							if copy_id > 10000
+				if copy_id >= 10
+					if copy_id >= 100
+						if copy_id >= 1000
+							if copy_id >= 10000
 								dim = 1.3
 							else
 								dim = 1.5
